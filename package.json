@@ -1,6 +1,6 @@
 {
   "name": "saeligram",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -42,5 +42,16 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"
-  }
+  },
+  "description": "Saeligram - Art marketplace",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshitkumar31/Saeligram.git"
+  },
+  "author": "Harshit Kumar (harshitkumar31)",
+  "bugs": {
+    "url": "https://github.com/harshitkumar31/Saeligram/issues"
+  },
+  "homepage": "https://github.com/harshitkumar31/Saeligram#readme"
 }
