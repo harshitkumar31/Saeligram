@@ -2,8 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyAjh_LIC98hSOUbIS8xgo_XY9zTqbgYVRE",
+    authDomain: "saeligram-c1718.firebaseapp.com",
+    databaseURL: "https://saeligram-c1718.firebaseio.com",
+    storageBucket: "saeligram-c1718.appspot.com",
+    messagingSenderId: "550885511547"
+};
 
 @NgModule({
   declarations: [
@@ -12,7 +21,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
