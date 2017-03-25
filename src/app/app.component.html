@@ -14,7 +14,13 @@
 </ul>-->
 <!--<h1>Hello {{ displayName }}</h1>
 <img *ngIf="photoUrl" src="{{photoUrl}}">-->
-<button (click)="register()">Register</button>
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
+<!--<button (click)="register()">Register</button>-->
+<p>Counter : {{counter | async}}</p>
+<button (click)="increment()" >Increment</button>
+<button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
+<button *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>
+<button *ngIf="auth.isAuthenticated()" (click)="showProfile()">Show Profile</button>
+<button *ngIf="auth.isAuthenticated()" (click)="updateProfile()">Update Profile</button>
+<button *ngIf="auth.isAuthenticated()" (click)="callApi()">Call API</button>
+<!--<button (click)="logout()">Logout</button>-->
 <div>{{error}}</div>

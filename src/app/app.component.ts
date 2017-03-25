@@ -3,6 +3,11 @@ import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods} from 'a
 import { Observable } from 'rxjs/observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Auth } from './auth.service';
+import { AuthHttp } from 'angular2-jwt';
+import { NgRedux, select } from 'ng2-redux'
+import {IAppState} from "./store";
+import { INCREMENT} from './actions';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +21,10 @@ export class AppComponent  {
   displayName;
   photoUrl;
   error;
+  @select() counter;
+  // @select(['messaging', 'newMessages']) newMessages;
 
-  constructor(private af: AngularFire, private http: Http){
+  constructor(private af: AngularFire, private http: Http, private auth: Auth, private authHttp: AuthHttp,private ngRedux: NgRedux<IAppState>){
 
   }
 
@@ -100,6 +107,33 @@ export class AppComponent  {
 
   logout(){
     this.af.auth.logout();
+  }
+
+
+  showProfile(){
+    console.log(this.auth.userProfile);
+
+  }
+
+  updateProfile(){
+    var url = 'https://' + 'harshit.eu.auth0.com' +'/api/v2/users/' + this.auth.userProfile.user_id;
+    var data = {
+      user_metadata: {
+        location: 'Hyd'
+      }
+    };
+
+    this.authHttp.patch(url, data)
+      .subscribe(res => console.log(res.json()));
+  }
+
+  callApi(){
+    this.authHttp.get('http://localhost:8080/authorized')
+      .subscribe(res => console.log(res));
+  }
+
+  increment(){
+    this.ngRedux.dispatch({ type: INCREMENT });
   }
 
 }
