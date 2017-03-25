@@ -16,6 +16,7 @@
 <img *ngIf="photoUrl" src="{{photoUrl}}">-->
 <!--<button (click)="register()">Register</button>-->
 <p>Counter : {{counter | async}}</p>
+<router-outlet></router-outlet>
 <button (click)="increment()" >Increment</button>
 <button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
 <button *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>

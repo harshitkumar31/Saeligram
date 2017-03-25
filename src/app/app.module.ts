@@ -5,14 +5,16 @@ import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux'
 import { AppComponent } from './app.component';
+import { RouterModule }   from '@angular/router';
 
 import { Auth } from './auth.service';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import {IAppState, rootReducer, INITIAL_STATE} from "./store";
-
+import { AboutUsComponent } from './about-us/about-us.component';
+import { routes } from './routes';
 declare var require: any;
 
-const createLogger = require('redux-logger');
+// const createLogger = require('redux-logger');
 
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -29,7 +31,8 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     NgReduxModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     Auth,
@@ -57,6 +61,6 @@ export class AppModule {
 
     var enhancers = isDevMode() ? [devTools.enhancer()] : [];
 
-    ngRedux.configureStore(rootReducer, INITIAL_STATE, [createLogger()], enhancers);
+    ngRedux.configureStore(rootReducer, INITIAL_STATE, [], enhancers);
   }
 }
