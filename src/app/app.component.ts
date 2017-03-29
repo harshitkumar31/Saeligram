@@ -8,6 +8,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { NgRedux, select } from 'ng2-redux'
 import {IAppState} from "./store";
 import { INCREMENT} from './actions';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -111,12 +112,12 @@ export class AppComponent  {
 
 
   showProfile(){
-    console.log(this.auth.userProfile);
-
+    console.log(this.auth);
+    console.log(this);
   }
 
   updateProfile(){
-    var url = 'https://' + 'harshit.eu.auth0.com' +'/api/v2/users/' + this.auth.userProfile.user_id;
+    var url = 'https://' + 'harshit.eu.auth0.com' +'/api/v2/users/' + this.auth.userProfile.sub;
     var data = {
       user_metadata: {
         location: 'Hyd'
