@@ -11,11 +11,13 @@ export class Auth{
       logo: 'https://raw.githubusercontent.com/harshitkumar31/Saeligram-fe/master/src/assets/header.jpg',
       primaryColor: '#31324F'
     },
-    /*auth: {
+    auth: {
       params: {
+        scope: 'openid profile user_id',
         audience: 'https://api.saeligram.com'
+        /*audience: 'https://harshit.eu.auth0.com/api/v2/'*/
       }
-    },*/
+    },
     additionalSignUpFields: [
       {
         name: 'UserType',
@@ -33,9 +35,9 @@ export class Auth{
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
 
     this.lock.on('authenticated', authResult => {
-      localStorage.setItem('id_token', authResult.idToken);
+      localStorage.setItem('id_token', authResult.accessToken);
 
-      this.lock.getUserInfo(authResult.idToken, (error, profile) => {
+      this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
         if(error) {
           console.log("ERROR", error);
           return;

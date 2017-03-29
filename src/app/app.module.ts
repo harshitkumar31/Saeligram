@@ -9,9 +9,14 @@ import { RouterModule }   from '@angular/router';
 
 import { Auth } from './auth.service';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import {MaterialModule} from '@angular/material';
+import { AlertModule } from 'ng2-bootstrap';
+
+
 import {IAppState, rootReducer, INITIAL_STATE} from "./store";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { routes } from './routes';
+import { HeaderComponent } from './header/header.component';
 declare var require: any;
 
 // const createLogger = require('redux-logger');
@@ -32,7 +37,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     NgReduxModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MaterialModule,
+    AlertModule.forRoot(),
   ],
   providers: [
     Auth,

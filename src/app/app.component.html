@@ -15,7 +15,9 @@
 <!--<h1>Hello {{ displayName }}</h1>
 <img *ngIf="photoUrl" src="{{photoUrl}}">-->
 <!--<button (click)="register()">Register</button>-->
+<app-header></app-header>
 <p>Counter : {{counter | async}}</p>
+<alert type="success">hello</alert>
 <router-outlet></router-outlet>
 <button (click)="increment()" >Increment</button>
 <button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
