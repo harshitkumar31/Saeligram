@@ -17,6 +17,8 @@ import {IAppState, rootReducer, INITIAL_STATE} from "./store";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { routes } from './routes';
 import { HeaderComponent } from './header/header.component';
+import createLogger from './middleware/reduxLogger';
+
 declare var require: any;
 
 // const createLogger = require('redux-logger');
@@ -69,6 +71,8 @@ export class AppModule {
 
     var enhancers = isDevMode() ? [devTools.enhancer()] : [];
 
-    ngRedux.configureStore(rootReducer, INITIAL_STATE, [], enhancers);
+    var middlewares = isDevMode() ? [createLogger] : [];
+
+    ngRedux.configureStore(rootReducer, INITIAL_STATE, [createLogger], enhancers);
   }
 }
