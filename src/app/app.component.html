@@ -20,10 +20,12 @@
 <alert type="success">hello</alert>
 <router-outlet></router-outlet>
 <button (click)="increment()" >Increment</button>
-<button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
-<button *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>
-<button *ngIf="auth.isAuthenticated()" (click)="showProfile()">Show Profile</button>
+<button (click)="checkMiddleApiCall()">Check API Call</button>
+<button (click)="getReq()">Get Req</button>
+<!--<button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
+<button *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>-->
+<!--<button *ngIf="auth.isAuthenticated()" (click)="showProfile()">Show Profile</button>
 <button *ngIf="auth.isAuthenticated()" (click)="updateProfile()">Update Profile</button>
-<button *ngIf="auth.isAuthenticated()" (click)="callApi()">Call API</button>
+<button *ngIf="auth.isAuthenticated()" (click)="callApi()">Call API</button>-->
 <!--<button (click)="logout()">Logout</button>-->
 <div>{{error}}</div>
