@@ -1,5 +1,5 @@
 import { tassign } from 'tassign';
-import { INCREMENT} from './actions';
+import { INCREMENT} from '../actions/actions';
 
 export interface IAppState{
   counter: number;

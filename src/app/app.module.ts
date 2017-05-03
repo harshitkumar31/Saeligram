@@ -6,14 +6,16 @@ import { AngularFireModule } from 'angularfire2';
 import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux'
 import { AppComponent } from './app.component';
 import { RouterModule }   from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
-import { Auth } from './auth.service';
+/*import { Auth } from './auth.service';*/
+import { Authentication } from './services/auth.service';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import {MaterialModule} from '@angular/material';
 import { AlertModule } from 'ng2-bootstrap';
 
 
-import {IAppState, rootReducer, INITIAL_STATE} from "./store";
+import {IAppState, rootReducer, INITIAL_STATE} from "./redux/store/store";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { routes } from './routes';
 import { HeaderComponent } from './header/header.component';
@@ -53,12 +55,14 @@ export const firebaseConfig = {
     AlertModule.forRoot(),
   ],
   providers: [
-    Auth,
+    /*Auth,*/
+    Authentication,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
-    }
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

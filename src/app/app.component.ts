@@ -3,12 +3,13 @@ import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods} from 'a
 import { Observable } from 'rxjs/observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Auth } from './auth.service';
+/*import { Auth } from './auth.service';*/
 import { AuthHttp } from 'angular2-jwt';
-import { NgRedux, select } from 'ng2-redux'
-import {IAppState} from "./store";
-import { INCREMENT} from './actions';
+import { NgRedux, select } from 'ng2-redux';
+import {IAppState} from "./redux/store/store";
+import { INCREMENT} from './redux/actions/actions';
 import { HeaderComponent } from './header/header.component';
+import { Authentication } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent  {
   @select() counter;
   // @select(['messaging', 'newMessages']) newMessages;
 
-  constructor(private af: AngularFire, private http: Http, private auth: Auth, private authHttp: AuthHttp,private ngRedux: NgRedux<IAppState>){
+  constructor(private af: AngularFire, private http: Http, private auth: Authentication, private authHttp: AuthHttp,private ngRedux: NgRedux<IAppState>){
 
   }
 
@@ -78,6 +79,10 @@ export class AppComponent  {
       })
       .catch(error => console.log("ERR", error));
   }
+
+  getReq(){
+    this.auth.login('xasdsf','asfsfd');
+  }
   login(){
     /*this.af.auth.login({
       provider: AuthProviders.Facebook,
@@ -112,12 +117,12 @@ export class AppComponent  {
 
 
   showProfile(){
-    console.log(this.auth);
+    /*console.log(this.auth);*/
     console.log(this);
   }
 
   updateProfile(){
-    var url = 'https://' + 'harshit.eu.auth0.com' +'/api/v2/users/' + this.auth.userProfile.sub;
+    /*var url = 'https://' + 'harshit.eu.auth0.com' +'/api/v2/users/' + this.auth.userProfile.sub;
     var data = {
       user_metadata: {
         location: 'Hyd'
@@ -125,7 +130,7 @@ export class AppComponent  {
     };
 
     this.authHttp.patch(url, data)
-      .subscribe(res => console.log(res.json()));
+      .subscribe(res => console.log(res.json()));*/
   }
 
   callApi(){
@@ -136,5 +141,7 @@ export class AppComponent  {
   increment(){
     this.ngRedux.dispatch({ type: INCREMENT });
   }
+
+
 
 }

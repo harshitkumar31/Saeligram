@@ -1,3 +1,4 @@
+/*
 import { Injectable } from "@angular/core";
 import { tokenNotExpired } from "angular2-jwt";
 declare  var Auth0Lock: any;
@@ -15,7 +16,7 @@ export class Auth{
       params: {
         scope: 'openid profile user_id',
         audience: 'https://api.saeligram.com'
-        /*audience: 'https://harshit.eu.auth0.com/api/v2/'*/
+        /!*audience: 'https://harshit.eu.auth0.com/api/v2/'*!/
       }
     },
     additionalSignUpFields: [
@@ -63,3 +64,4 @@ export class Auth{
     this.userProfile = null;
   }
 }
+*/
