@@ -22,6 +22,18 @@
 <button (click)="increment()" >Increment</button>
 <button (click)="checkMiddleApiCall()">Check API Call</button>
 <button (click)="getReq()">Get Req</button>
+<button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+<button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+<md-card>
+      <md-icon>build</md-icon>
+    </md-card>
+<button md-raised-button color="accent">ACCENT RAISED</button>
+<md-card>
+      <md-checkbox>Unchecked</md-checkbox>
+      <md-checkbox [checked]="true">Checked</md-checkbox>
+      <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+      <md-checkbox [disabled]="true">Disabled</md-checkbox>
+    </md-card>
 <!--<button *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
 <button *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>-->
 <!--<button *ngIf="auth.isAuthenticated()" (click)="showProfile()">Show Profile</button>

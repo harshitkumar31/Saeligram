@@ -2,11 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule , isDevMode} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
 import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux'
 import { AppComponent } from './app.component';
 import { RouterModule }   from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+
 
 /*import { Auth } from './auth.service';*/
 import { Authentication } from './services/auth.service';
@@ -48,11 +51,12 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireModule.initializeApp(firebaseConfig),
     NgReduxModule,
     RouterModule.forRoot(routes),
-    MaterialModule,
+    MaterialModule.forRoot(),
     AlertModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
     /*Auth,*/
