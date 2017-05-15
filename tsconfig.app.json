@@ -11,6 +11,10 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+     "baseUrl": ".", 
+    "paths": {
+      "@saeligram/*": ["src/app/*"]
+    }
   }
 }
