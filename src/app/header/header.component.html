@@ -16,6 +16,7 @@
         </li>
         <li>
           <a class="show-cursor" *ngIf="!(authenticated | async)"  (click)="login('hk_151095@yahoo.com','#ashit31')">Login</a>
+          <app-login-register></app-login-register>
           <a class="show-cursor" *ngIf="authenticated | async"  (click)="logout()">Logout</a>
           <!-- <a class="show-cursor" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</a> -->
         </li>

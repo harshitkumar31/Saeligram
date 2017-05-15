@@ -4,7 +4,7 @@ import { SET_AUTH_DETAILS} from '../redux/actions/actions';
 import { NgRedux, select } from 'ng2-redux';
 import {IAppState} from "../redux/store/store";
 import {MdSnackBar} from '@angular/material';
-
+import {LoginRegisterComponent}  from '../login-register/login-register.component';
 
 @Component({
   selector: 'app-header',
