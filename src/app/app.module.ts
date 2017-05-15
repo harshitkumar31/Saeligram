@@ -23,6 +23,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { routes } from './routes';
 import { HeaderComponent } from './header/header.component';
 import createLogger from './middleware/reduxLogger';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 
 declare var require: any;
 
@@ -45,7 +46,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     AboutUsComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,

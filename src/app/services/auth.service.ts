@@ -15,7 +15,7 @@ export class Authentication{
 
 	}
 
-	login(email, password){
+	login(email, password, afterLoginFn){
 		const user = {
 			email,
 			password,
@@ -23,12 +23,15 @@ export class Authentication{
 		const url = `http://${API_HOST}:${API_HOST_PORT}/api/users/login`;
 		return this.http.post(url,{user}).subscribe(res => {
 			console.log(res);
-	  		const userObj = JSON.parse(res["_body"]).user;
+			const resp = res.json();
+	  		const userObj = resp.user;
 	  		this.ngRedux.dispatch({ type: SET_AUTH_DETAILS, payload: userObj });
+	  		afterLoginFn();
 		});
 	}
 
-	logout(){
+	logout(afterLogoutFn){
 		this.ngRedux.dispatch({type: RESET_AUTH_DETAILS});
+		afterLogoutFn();
 	}
 }
