@@ -30,6 +30,23 @@ export class Authentication{
 		});
 	}
 
+	register(email,username, password, userType, afterRegisterFn){
+		const user = {
+			email,
+			password,
+			username,
+			userType,
+		};
+		const url = `http://${API_HOST}:${API_HOST_PORT}/api/users`;
+		return this.http.post(url,{user}).subscribe(res => {
+			console.log(res);
+			const resp = res.json();
+	  		const userObj = resp.user;
+	  		// this.ngRedux.dispatch({ type: SET_AUTH_DETAILS, payload: userObj });
+	  		afterRegisterFn();
+		});	
+	}
+
 	logout(afterLogoutFn){
 		this.ngRedux.dispatch({type: RESET_AUTH_DETAILS});
 		afterLogoutFn();

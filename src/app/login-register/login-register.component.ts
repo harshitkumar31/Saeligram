@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MdDialog, MdDialogRef} from '@angular/material';
+import {LoginComponent}  from '../login/login.component';
+import {RegisterComponent}  from '../register/register.component';
 
 
 @Component({
@@ -8,13 +10,16 @@ import {MdDialog, MdDialogRef} from '@angular/material';
   styleUrls: ['./login-register.component.css']
 })
 export class LoginRegisterComponent implements OnInit {
-  selectedOption: string;
+  selectedOption: number;
 
   constructor(public dialog: MdDialog) { }
 
   ngOnInit() {
+    this.selectedOption = 1;
   }
-
+  select(num){
+    this.selectedOption = num;
+  }
   openDialog() {
     let dialogRef = this.dialog.open(DialogResultExampleDialog);
     dialogRef.afterClosed().subscribe(result => {
@@ -31,5 +36,11 @@ export class LoginRegisterComponent implements OnInit {
   templateUrl: './dialog-result-example-dialog.html',
 })
 export class DialogResultExampleDialog {
-  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
+  selectedOption: number;
+  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {
+    this.selectedOption = 1;
+  }
+  select(num){
+    this.selectedOption = num;
+  }
 }

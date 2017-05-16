@@ -24,6 +24,11 @@ import { routes } from './routes';
 import { HeaderComponent } from './header/header.component';
 import createLogger from './middleware/reduxLogger';
 import { LoginRegisterComponent,DialogResultExampleDialog } from './login-register/login-register.component';
+import { CarouselModule } from 'angular4-carousel';
+import { CarouselComponent } from './carousel/carousel.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 
 declare var require: any;
 
@@ -49,6 +54,9 @@ export const firebaseConfig = {
     HeaderComponent,
     LoginRegisterComponent,
     DialogResultExampleDialog,
+    CarouselComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +68,7 @@ export const firebaseConfig = {
     MaterialModule.forRoot(),
     AlertModule.forRoot(),
     BrowserAnimationsModule,
+    CarouselModule,
   ],
   providers: [
     /*Auth,*/
